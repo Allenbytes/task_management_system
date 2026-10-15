@@ -1,0 +1,2589 @@
+{
+  "info": {
+    "_postman_id": "d3aee575-96ab-494b-938e-e27beb94dcfa",
+    "name": "Study Helper API",
+    "description": "# **Overview:\n\n**The Study Helper API is a comprehensive platform aimed at assisting students with their study  \nsession schedules, learning resources, and academic statistics. The API integrates multiple  \nfunctionalities to help students plan, track, and optimize their study activities. This solution goes  \nbeyond basic CRUD operations by offering complex data aggregation, real-time data  \nmanagement, personalized recommendations, and dynamic scheduling.\n\n### Real-World Relevance:\n\nMany students struggle to organize their study schedules and obtain study resources. This  \nAPI addresses the need for a comprehensive study assistant that combines planning,  \nresource recommendations, reminders, and progress tracking. The system is scalable, and it’s  \napplicable to college students in all academic fields.\n\n##### The Study Helper API focuses on:\n\n● Setting exam date reminders.  \n● Allowing personalized scheduling, progress tracking, and study reminders.  \n● Offering external resources for subjects like online articles, researches, and  \nhelpful links.  \n● Allowing users to share study resources (notes).\n\nExternal APIs used:\n\n- CORE API for study resources\n    \n- Google API\n    \n    - Google Calendar for marking exam datetimes\n        \n    - Gmail for sending notes\n        \n- Zen Quotes API for motivational quotes\n    \n- Open Trivia Database API for quiz resources",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41718537"
+  },
+  "item": [
+    {
+      "name": "/tasks",
+      "item": [
+        {
+          "name": "/tasks",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/tasks",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"task\": \r\n        \"\"\r\n    ,\r\n    \"goal_date\": \r\n        \"2025-03-30\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/tasks/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "tasks",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/tasks",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"task\": \r\n        \"asdf\"\r\n    ,\r\n    \"goal_date\": \r\n        \"2025-03-30\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/tasks/1/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "tasks",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/tasks",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/tasks",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD tasks for studying.\n\nRequest Parameters:\n\n- Required:\n    \n    - `task` (string): The study task description.\n        \n    - `goal_date` (date, format: YYYY-MM-DD): The target completion date for the task.\n        \n- Optional:\n    \n    - `status` (boolean): Task completion status (default: false).\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"task\": \"Complete Python assignment\",  \n\"goal_date\": \"2023-12-01\",  \n\"status\": false  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"task\": \"Complete Python assignment\",  \n\"status\": false,  \n\"goal_date\": \"2023-12-01\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Invalid request body or missing required fields.\n    \n- 404 Not Found: Task not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/subjects-lessons",
+      "item": [
+        {
+          "name": "/subjects-lessons",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-lessons/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-lessons",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/subjects-lessons",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"subject\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"lesson\": \r\n        \"This field is required.\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-lessons/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-lessons",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/subjects-lessons",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-lessons",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-lessons"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/subjects-lessons",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-lessons",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-lessons"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/subjects-lessons",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-lessons",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-lessons"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD lessons under respective subjects.\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The name of the subject.\n        \n    - `lesson` (string): The lesson content.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"Mathematics\",  \n\"lesson\": \"Learn about quadratic equations.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"Mathematics\",  \n\"lesson\": \"Learn about quadratic equations.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Lesson not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/subjects-diary",
+      "item": [
+        {
+          "name": "/subjects-diary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-diary",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-diary"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/subjects-diary",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"subject\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"note\": \r\n        \"This field is required.\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-diary/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-diary",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/subjects-diary",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-diary/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-diary",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/subjects-diary",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-diary",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-diary"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/subjects-diary",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/subjects-diary",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "subjects-diary"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD sentiments and self-notes about subjects.\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The name of the subject.\n        \n    - `note` (string): The diary entry content.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"Physics\",  \n\"note\": \"Study Newton's laws by next week.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"Physics\",  \n\"note\": \"Study Newton's laws by next week.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Diary entry not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/study-schedule",
+      "item": [
+        {
+          "name": "/study-schedule",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-schedule",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-schedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-schedule",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"study_date\": \r\n        \"2025-03-30\"\r\n    ,\r\n    \"study_hours\": \r\n        3\r\n    ,\r\n    \"subjects\": \r\n        \"This field is required.\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-schedule/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-schedule",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-schedule",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-schedule/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-schedule",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-schedule",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-schedule",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-schedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-schedule",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-schedule",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-schedule"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD a subject they want to study with x number of hours and date to be studied.\n\nRequest Parameters:\n\n- Required:\n    \n    - `study_date` (date, format: YYYY-MM-DD): The study session date.\n        \n    - `study_hours` (float): Total study hours planned.\n        \n    - `subjects` (string): Comma-separated list of subjects.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"study_date\": \"2023-12-01\",  \n\"study_hours\": 5.5,  \n\"subjects\": \"Mathematics,Physics\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"study_date\": \"2023-12-01\",  \n\"study_hours\": 5.5,  \n\"subjects\": \"Mathematics,Physics\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields or invalid data types.\n    \n- 404 Not Found: Study schedule not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/study-resources",
+      "item": [
+        {
+          "name": "/study-resources",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-resources",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-resources"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-resources",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"url\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"subject\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"resource_type\": \r\n        \"This field is required.\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-resources/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-resources",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-resources",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-resources",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-resources"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-resources",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-resources",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-resources"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-resources",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-resources/3/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-resources",
+                "3",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD own study resources.\n\nRequest Parameters:\n\n- Required:\n    \n    - `title` (string): Title of the resource.\n        \n    - `url` (string): URL of the resource.\n        \n    - `subject` (string): Subject associated with the resource.\n        \n    - `resource_type` (string): Type of resource (e.g., book, article).\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"title\": \"Python Crash Course\",  \n\"url\": \"[https://example.com/python-crash-course\"](https://example.com/python-crash-course),  \n\"subject\": \"Programming\",  \n\"resource_type\": \"book\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"title\": \"Python Crash Course\",  \n\"url\": \"[https://example.com/python-crash-course\"](https://example.com/python-crash-course),  \n\"subject\": \"Programming\",  \n\"resource_type\": \"book\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study resource not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/study-break",
+      "item": [
+        {
+          "name": "/study-break",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-break",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-break"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-break",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"study_duration\": \r\n        40\r\n    ,\r\n    \"break_duration\": \r\n        20\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-break/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-break",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-break",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-break",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-break"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-break",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-break",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-break"
+              ],
+              "query": [
+                {
+                  "key": null,
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-break",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-break",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-break"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD a timer that alternates between study time and break time.\n\nRequest Parameters:\n\n- Required:\n    \n    - `study_duration` (integer): Study duration in minutes.\n        \n    - `break_duration` (integer): Break duration in minutes.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"study_duration\": 50,  \n\"break_duration\": 10  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"study_duration\": 50,  \n\"break_duration\": 10,  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study break timer not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/study-progress",
+      "item": [
+        {
+          "name": "/study-progress",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-progress",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-progress"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-progress",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"study_session_date\": \r\n        \"2025-03-30\"\r\n    ,\r\n    \"subject\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"study_hours\": \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-progress/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-progress",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-progress",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-progress",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-progress"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-progress",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-progress",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-progress"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-progress",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-progress",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-progress"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD accomplished study sessions on subjects.\n\nRequest Parameters:\n\n- Required:\n    \n    - `study_session_date` (date, format: YYYY-MM-DD): The study session date.\n        \n    - `subject` (string): The subject studied.\n        \n    - `completed` (boolean): Whether the session was completed.\n        \n    - `study_hours` (float): Total study hours.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"study_session_date\": \"2023-12-01\",  \n\"subject\": \"Mathematics\",  \n\"completed\": true,  \n\"study_hours\": 2.5  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"study_session_date\": \"2023-12-01\",  \n\"subject\": \"Mathematics\",  \n\"completed\": true,  \n\"study_hours\": 2.5,  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study progress not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/study-challenges",
+      "item": [
+        {
+          "name": "/study-challenges",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-challenges",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-challenges"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-challenges",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"challenge_description\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"start_date\": \r\n        \"2025-03-30\"\r\n    ,\r\n    \"end_date\": \r\n        \"2025-03-30\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-challenges/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-challenges",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-challenges",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-challenges",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-challenges"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-challenges",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-challenges",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-challenges"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-challenges",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-challenges",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-challenges"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD study challenges for user self.\n\nRequest Parameters:\n\n- Required:\n    \n    - `challenge_description` (string): Description of the challenge.\n        \n    - `start_date` (date, format: YYYY-MM-DD): Start date of the challenge.\n        \n    - `end_date` (date, format: YYYY-MM-DD): End date of the challenge.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"challenge_description\": \"Study 5 hours daily for a week.\",  \n\"start_date\": \"2023-12-01\",  \n\"end_date\": \"2023-12-07\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"challenge_description\": \"Study 5 hours daily for a week.\",  \n\"start_date\": \"2023-12-01\",  \n\"end_date\": \"2023-12-07\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study challenge not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/study/quiz",
+      "item": [
+        {
+          "name": "/study/quiz",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study/quiz",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study",
+                "quiz"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study/quiz",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"subject\": \r\n        \"Math\"\r\n    ,\r\n    \"quiz_content\": \r\n        \"q1 answer 2 dfeit203\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study/quiz/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study",
+                "quiz",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study/quiz",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study/quiz",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study",
+                "quiz"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study/quiz",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study/quiz",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study",
+                "quiz"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study/quiz",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study/quiz",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study",
+                "quiz"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD own set of questions and answers.\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The subject for the quiz.\n        \n    - `quiz_content` (string): Quiz content.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"Science\",  \n\"quiz_content\": \"What is photosynthesis?\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"Science\",  \n\"quiz_content\": \"What is photosynthesis?\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Quiz not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/study-prompt",
+      "item": [
+        {
+          "name": "/study-prompt",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-prompt",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-prompt"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-prompt",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"subject\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"prompt\": \r\n        \"This field is required.\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-prompt/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-prompt",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-prompt",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-prompt",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-prompt"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-prompt",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-prompt",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-prompt"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-prompt",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-prompt/3/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-prompt",
+                "3",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD a singular question and answer, like a flashcard\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The subject for the prompt.\n        \n    - `prompt` (string): Prompt content.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"History\",  \n\"prompt\": \"Discuss the causes of World War II.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"History\",  \n\"prompt\": \"Discuss the causes of World War II.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study prompt not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/resources/quiz",
+      "item": [
+        {
+          "name": "/resources/quiz",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/resources/quiz/?subject=geography",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "resources",
+                "quiz",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "subject",
+                  "value": "geography"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Fetch questions and answers from Open Trivia Database API with respect to subject indicated\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The subject for the quiz.\n        \n\nResponse Structure:  \n{  \n\"questions\": \\[  \n{  \n\"question\": \"What is the capital of France?\",  \n\"correct_answer\": \"Paris\",  \n\"incorrect_answers\": \\[\"Berlin\", \"Madrid\", \"Rome\"\\],  \n\"difficulty\": \"easy\"  \n}  \n\\]  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 500 Internal Server Error: Failed to fetch quiz questions."
+    },
+    {
+      "name": "/study-reflection",
+      "item": [
+        {
+          "name": "/study-reflection",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-reflection",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-reflection"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-reflection",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"reflection_date\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"strengths\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"areas_for_improvement\": \r\n        \"This field is required.\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-reflection/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-reflection",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-reflection",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-reflection",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-reflection"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-reflection",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-reflection",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-reflection"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/study-reflection",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-reflection",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-reflection"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD reflections about studies, mental health, goals, milestones, etc.\n\nRequest Parameters:\n\n- Required:\n    \n    - `reflection_date` (date, format: YYYY-MM-DD): The date of reflection.\n        \n    - `strengths` (string): Strengths identified during reflection.\n        \n    - `areas_for_improvement` (string): Areas for improvement identified.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"reflection_date\": \"2023-12-01\",  \n\"strengths\": \"Good time management.\",  \n\"areas_for_improvement\": \"Need to focus more on Mathematics.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"reflection_date\": \"2023-12-01\",  \n\"strengths\": \"Good time management.\",  \n\"areas_for_improvement\": \"Need to focus more on Mathematics.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Reflection not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/course-grades",
+      "item": [
+        {
+          "name": "/course-grades",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/course-grades",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "course-grades"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/course-grades",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"course_name\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"grade\": \r\n        \"1.00\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/course-grades/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "course-grades",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/course-grades",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/course-grades",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "course-grades"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/course-grades",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/course-grades",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "course-grades"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/course-grades",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/course-grades",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "course-grades"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD grades on respective subjects.\n\nRequest Parameters:\n\n- Required:\n    \n    - `course_name` (string): The name of the course.\n        \n    - `grade` (float): The grade achieved.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"course_name\": \"Mathematics\",  \n\"grade\": 95.5  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"course_name\": \"Mathematics\",  \n\"grade\": 95.5,  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Grade not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/notes",
+      "item": [
+        {
+          "name": "/notes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notes",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "notes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/notes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"subject\": \r\n        \"This field is required.\"\r\n    ,\r\n    \"note_content\": \r\n        \"This field is required.\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notes/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "notes",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/notes",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notes",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "notes"
+              ],
+              "query": [
+                {
+                  "key": null,
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/notes",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notes",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "notes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/notes",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notes",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "notes"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "CRUD notes. This endpoint is a source for /send-study-notes.\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The subject of the note.\n        \n    - `note_content` (string): Content of the note.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"Biology\",  \n\"note_content\": \"Mitosis is the process of cell division.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"Biology\",  \n\"note_content\": \"Mitosis is the process of cell division.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Note not found for GET/PUT/DELETE requests."
+    },
+    {
+      "name": "/send-study-notes",
+      "item": [
+        {
+          "name": "/send-study-notes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"to_email\": \"cunananlezter@gmail.com.com\",\r\n  \"note_id\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/send-study-notes/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "send-study-notes",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Sends notes to gmail based on note id inputted.\n\nRequest Parameters:\n\n- Required:\n    \n    - `to_email` (string): Recipient email address.\n        \n    - `note_id` (integer): ID of the study note to send.\n        \n\nRequest Body Example (POST):  \n{  \n\"to_email\": \"[student@example.com](https://mailto:student@example.com)\",  \n\"note_id\": 1  \n}\n\nResponse Structure:  \n{  \n\"message\": \"Notes sent successfully via Gmail!\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 401 Unauthorized: User must authenticate with Gmail.\n    \n- 403 Forbidden: Missing required Gmail scope.\n    \n- 404 Not Found: Study note not found."
+    },
+    {
+      "name": "/motivation",
+      "item": [
+        {
+          "name": "/motivation",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/motivation",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "motivation"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Outputs a random inspiring quote with author from ZenQuotes API.\n\nRequest Parameters:  \nNone\n\nResponse Structure:  \n{  \n\"quote\": \"The way to get started is to quit talking and begin doing.\",  \n\"author\": \"Walt Disney\"  \n}\n\nError Handling:\n\n- 500 Internal Server Error: Failed to fetch motivational quote."
+    },
+    {
+      "name": "/study-resources/recommendations/",
+      "item": [
+        {
+          "name": "/study-resources/recommendations/",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/study-resources-recommendations/articles/?subject=computers",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "study-resources-recommendations",
+                "articles",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "subject",
+                  "value": "computers"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Fetches study resources from CORE API with respect to resource type and subject indicated.\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The subject for which resources are requested.\n        \n- Optional:\n    \n    - `resource_type` (string): Type of resource (e.g., books, articles).\n        \n\nResponse Structure:  \n\\[  \n{  \n\"title\": \"Python Crash Course\",  \n\"url\": \"[https://example.com/python-crash-course\"](https://example.com/python-crash-course),  \n\"type\": \"book\"  \n}  \n\\]\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 500 Internal Server Error: Failed to fetch resources."
+    },
+    {
+      "name": "/add-exam-to-calendar",
+      "item": [
+        {
+          "name": "/add-exam-to-calendar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"exam_date\": \"2025-03-20\",\r\n  \"exam_time\": \"10:00\",\r\n  \"subject\": \"Dsalgo\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/add-exam-to-calendar/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "add-exam-to-calendar",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Marks exam date on user's Google Calendar.\n\nRequest Parameters:\n\n- Required:\n    \n    - `exam_date` (date, format: YYYY-MM-DD): The exam date.\n        \n    - `exam_time` (time, format: HH:MM): The exam time.\n        \n    - `subject` (string): The subject of the exam.\n        \n\nRequest Body Example (POST):  \n{  \n\"exam_date\": \"2023-12-15\",  \n\"exam_time\": \"09:00\",  \n\"subject\": \"Mathematics\"  \n}\n\nResponse Structure:  \n{  \n\"message\": \"Exam added to Google Calendar successfully!\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields or invalid date/time format.\n    \n- 401 Unauthorized: User must authenticate with Google Calendar.\n    \n- 403 Forbidden: Missing required Google Calendar scope."
+    },
+    {
+      "name": "/generate-study-statistics",
+      "item": [
+        {
+          "name": "/generate-study-statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/generate-study-statistics",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "generate-study-statistics"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Fetches /course-grades and /study-progress to generate strengths, weaknesses, and study habits.\n\nRequest Parameters:  \nNone\n\nResponse Structure:  \n{  \n\"highest_grade\": {  \n\"subject\": \"Mathematics\",  \n\"grade\": 95.5  \n},  \n\"lowest_grade\": {  \n\"subject\": \"Physics\",  \n\"grade\": 70.0  \n},  \n\"most_studied_subject\": {  \n\"subject\": \"Mathematics\",  \n\"study_hours\": 20.5  \n},  \n\"least_studied_subject\": {  \n\"subject\": \"History\",  \n\"study_hours\": 5.0  \n}  \n}\n\nError Handling:\n\n- 500 Internal Server Error: Failed to generate statistics."
+    },
+    {
+      "name": "/generate-study-schedule/",
+      "item": [
+        {
+          "name": "/generate-study-schedule/",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/generate-study-schedule/1/2/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "generate-study-schedule",
+                "1",
+                "2",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Fetches /study-schedule and /study-break to generate a study schedule limited by available hours and makes intervals based on study break timer chosen. Accounts for lunch and dinner time by allotting an hour for each.\n\nRequest Parameters:\n\n- Required:\n    \n    - `study_schedule_id` (integer): ID of the study schedule.\n        \n    - `timer_id` (integer): ID of the study break timer.\n        \n\nResponse Structure:  \n{  \n\"message\": \"Detailed study schedule generated successfully.\",  \n\"schedule\": \\[  \n{  \n\"subject\": \"Mathematics\",  \n\"type\": \"study\",  \n\"start_time\": \"08:00\",  \n\"end_time\": \"09:00\",  \n\"duration_minutes\": 60  \n},  \n{  \n\"subject\": \"Mathematics\",  \n\"type\": \"break\",  \n\"start_time\": \"09:00\",  \n\"end_time\": \"09:10\",  \n\"duration_minutes\": 10  \n}  \n\\]  \n}\n\nError Handling:\n\n- 400 Bad Request: Invalid study hours or no subjects available.\n    \n- 404 Not Found: Study schedule or timer not found."
+    },
+    {
+      "name": "utilities",
+      "item": [
+        {
+          "name": "JWT Authentication Security",
+          "item": [
+            {
+              "name": "/api/token",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/token/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "token",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/api/token/refresh",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/token/refresh",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "token",
+                    "refresh"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "description": "for user authentication"
+        },
+        {
+          "name": "Google Authentication",
+          "item": [
+            {
+              "name": "/api/oauth/redirect",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/oauth/redirect",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "oauth",
+                    "redirect"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/api/oauth/callback",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyNjU1MjA3LCJpYXQiOjE3NDI1Njg4MDcsImp0aSI6IjM4ZGMzN2E2MGZlZDQ0NDJhYzlmN2ZlNTZmZmE1OTA0IiwidXNlcl9pZCI6MX0.jRC0qgwOizA4mb3bJQTWquOoxUoPjz6ytJuKJIiwCT4",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/oauth/callback",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "oauth",
+                    "callback"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "description": "prompts user to login in browser to access /add-exam-to-calendar and /send-study-notes"
+        }
+      ],
+      "description": "Tools for authentication."
+    }
+  ]
+}

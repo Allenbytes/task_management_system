@@ -1,0 +1,2568 @@
+{
+  "info": {
+    "name": "Study Helper API v2",
+    "description": "# **Overview:\n\n**The Study Helper API is a comprehensive platform aimed at assisting students with their study  \nsession schedules, learning resources, and academic statistics. The API integrates multiple  \nfunctionalities to help students plan, track, and optimize their study activities. This solution goes  \nbeyond basic CRUD operations by offering complex data aggregation, real-time data  \nmanagement, personalized recommendations, and dynamic scheduling.\n\n### Real-World Relevance:\n\nMany students struggle to organize their study schedules and obtain study resources. This  \nAPI addresses the need for a comprehensive study assistant that combines planning,  \nresource recommendations, reminders, and progress tracking. The system is scalable, and it’s  \napplicable to college students in all academic fields.\n\n##### The Study Helper API focuses on:\n\n● Setting exam date reminders.  \n● Allowing personalized scheduling, progress tracking, and study reminders.  \n● Offering external resources for subjects like online articles, researches, and  \nhelpful links.  \n● Allowing users to share study resources (notes).\n\nExternal APIs used:\n\n- CORE API for study resources\n    \n- Google API\n    \n    - Google Calendar for marking exam datetimes\n        \n    - Gmail for sending notes\n        \n- Zen Quotes API for motivational quotes\n    \n- Open Trivia Database API for quiz resources",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000/api"
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    },
+    {
+      "key": "refresh_token",
+      "value": ""
+    },
+    {
+      "key": "task_id",
+      "value": ""
+    },
+    {
+      "key": "lesson_id",
+      "value": ""
+    },
+    {
+      "key": "diary_id",
+      "value": ""
+    },
+    {
+      "key": "schedule_id",
+      "value": ""
+    },
+    {
+      "key": "resource_id",
+      "value": ""
+    },
+    {
+      "key": "timer_id",
+      "value": ""
+    },
+    {
+      "key": "progress_id",
+      "value": ""
+    },
+    {
+      "key": "challenge_id",
+      "value": ""
+    },
+    {
+      "key": "quiz_id",
+      "value": ""
+    },
+    {
+      "key": "prompt_id",
+      "value": ""
+    },
+    {
+      "key": "reflection_id",
+      "value": ""
+    },
+    {
+      "key": "grade_id",
+      "value": ""
+    },
+    {
+      "key": "note_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "description": "Register or log in first: both save the tokens into collection variables automatically. Every other request uses `Bearer {{access_token}}` (set on the collection). Access tokens last 1 hour; run \"Refresh access token\" to get a new one.",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/register/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "register"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"student1\",\n  \"email\": \"student1@example.com\",\n  \"password\": \"S3cure-pass!\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const data = pm.response.json();",
+                  "if (data.access) pm.collectionVariables.set('access_token', data.access);",
+                  "if (data.refresh) pm.collectionVariables.set('refresh_token', data.refresh);",
+                  "pm.test('tokens saved', () => pm.expect(data.access).to.be.a('string'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login (get tokens)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/token/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"student1\",\n  \"password\": \"S3cure-pass!\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const data = pm.response.json();",
+                  "if (data.access) pm.collectionVariables.set('access_token', data.access);",
+                  "if (data.refresh) pm.collectionVariables.set('refresh_token', data.refresh);",
+                  "pm.test('tokens saved', () => pm.expect(data.access).to.be.a('string'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Refresh access token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/token/refresh/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "refresh"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"{{refresh_token}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const data = pm.response.json();",
+                  "if (data.access) pm.collectionVariables.set('access_token', data.access);",
+                  "if (data.refresh) pm.collectionVariables.set('refresh_token', data.refresh);",
+                  "pm.test('tokens saved', () => pm.expect(data.access).to.be.a('string'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "Blacklists the refresh token.",
+            "url": {
+              "raw": "{{base_url}}/logout/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "logout"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"{{refresh_token}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/tasks",
+      "description": "CRUD tasks for studying.\n\nRequest Parameters:\n\n- Required:\n    \n    - `task` (string): The study task description.\n        \n    - `goal_date` (date, format: YYYY-MM-DD): The target completion date for the task.\n        \n- Optional:\n    \n    - `status` (boolean): Task completion status (default: false).\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"task\": \"Complete Python assignment\",  \n\"goal_date\": \"2023-12-01\",  \n\"status\": false  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"task\": \"Complete Python assignment\",  \n\"status\": false,  \n\"goal_date\": \"2023-12-01\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Invalid request body or missing required fields.\n    \n- 404 Not Found: Task not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/tasks/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/tasks/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task\": \"Complete Python assignment\",\n  \"goal_date\": \"2026-12-01\",\n  \"status\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('task_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/tasks/{{task_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks",
+                "{{task_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/tasks/{{task_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks",
+                "{{task_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task\": \"Complete Python assignment\",\n  \"goal_date\": \"2026-12-01\",\n  \"status\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/tasks/{{task_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks",
+                "{{task_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task\": \"Complete Python assignment\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/tasks/{{task_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks",
+                "{{task_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/subjects-lessons",
+      "description": "CRUD lessons under respective subjects.\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The name of the subject.\n        \n    - `lesson` (string): The lesson content.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"Mathematics\",  \n\"lesson\": \"Learn about quadratic equations.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"Mathematics\",  \n\"lesson\": \"Learn about quadratic equations.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Lesson not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-lessons/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-lessons"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-lessons/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-lessons"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Mathematics\",\n  \"lesson\": \"Learn about quadratic equations.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('lesson_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-lessons/{{lesson_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-lessons",
+                "{{lesson_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-lessons/{{lesson_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-lessons",
+                "{{lesson_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Mathematics\",\n  \"lesson\": \"Learn about quadratic equations.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-lessons/{{lesson_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-lessons",
+                "{{lesson_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Mathematics\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-lessons/{{lesson_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-lessons",
+                "{{lesson_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/subjects-diary",
+      "description": "CRUD sentiments and self-notes about subjects.\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The name of the subject.\n        \n    - `note` (string): The diary entry content.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"Physics\",  \n\"note\": \"Study Newton's laws by next week.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"Physics\",  \n\"note\": \"Study Newton's laws by next week.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Diary entry not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-diary/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-diary"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-diary/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-diary"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Physics\",\n  \"note\": \"Study Newton's laws by next week.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('diary_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-diary/{{diary_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-diary",
+                "{{diary_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-diary/{{diary_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-diary",
+                "{{diary_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Physics\",\n  \"note\": \"Study Newton's laws by next week.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-diary/{{diary_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-diary",
+                "{{diary_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Physics\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/subjects-diary/{{diary_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subjects-diary",
+                "{{diary_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/study-schedule",
+      "description": "CRUD a subject they want to study with x number of hours and date to be studied.\n\nRequest Parameters:\n\n- Required:\n    \n    - `study_date` (date, format: YYYY-MM-DD): The study session date.\n        \n    - `study_hours` (float): Total study hours planned.\n        \n    - `subjects` (string): Comma-separated list of subjects.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"study_date\": \"2023-12-01\",  \n\"study_hours\": 5.5,  \n\"subjects\": \"Mathematics,Physics\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"study_date\": \"2023-12-01\",  \n\"study_hours\": 5.5,  \n\"subjects\": \"Mathematics,Physics\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields or invalid data types.\n    \n- 404 Not Found: Study schedule not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-schedule/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-schedule"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-schedule/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-schedule"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_date\": \"2026-12-01\",\n  \"study_hours\": 5.5,\n  \"subjects\": \"Mathematics,Physics\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('schedule_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-schedule/{{schedule_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-schedule",
+                "{{schedule_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-schedule/{{schedule_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-schedule",
+                "{{schedule_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_date\": \"2026-12-01\",\n  \"study_hours\": 5.5,\n  \"subjects\": \"Mathematics,Physics\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-schedule/{{schedule_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-schedule",
+                "{{schedule_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_date\": \"2026-12-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-schedule/{{schedule_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-schedule",
+                "{{schedule_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/study-resources",
+      "description": "CRUD own study resources.\n\nRequest Parameters:\n\n- Required:\n    \n    - `title` (string): Title of the resource.\n        \n    - `url` (string): URL of the resource.\n        \n    - `subject` (string): Subject associated with the resource.\n        \n    - `resource_type` (string): Type of resource (e.g., book, article).\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"title\": \"Python Crash Course\",  \n\"url\": \"[https://example.com/python-crash-course\"](https://example.com/python-crash-course),  \n\"subject\": \"Programming\",  \n\"resource_type\": \"book\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"title\": \"Python Crash Course\",  \n\"url\": \"[https://example.com/python-crash-course\"](https://example.com/python-crash-course),  \n\"subject\": \"Programming\",  \n\"resource_type\": \"book\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study resource not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-resources/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-resources"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-resources/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-resources"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Python Crash Course\",\n  \"url\": \"https://example.com/python-crash-course\",\n  \"subject\": \"Programming\",\n  \"resource_type\": \"book\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('resource_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-resources/{{resource_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-resources",
+                "{{resource_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-resources/{{resource_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-resources",
+                "{{resource_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Python Crash Course\",\n  \"url\": \"https://example.com/python-crash-course\",\n  \"subject\": \"Programming\",\n  \"resource_type\": \"book\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-resources/{{resource_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-resources",
+                "{{resource_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Python Crash Course\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-resources/{{resource_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-resources",
+                "{{resource_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/study-break",
+      "description": "CRUD a timer that alternates between study time and break time.\n\nRequest Parameters:\n\n- Required:\n    \n    - `study_duration` (integer): Study duration in minutes.\n        \n    - `break_duration` (integer): Break duration in minutes.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"study_duration\": 50,  \n\"break_duration\": 10  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"study_duration\": 50,  \n\"break_duration\": 10,  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study break timer not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-break/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-break"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-break/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-break"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_duration\": 50,\n  \"break_duration\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('timer_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-break/{{timer_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-break",
+                "{{timer_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-break/{{timer_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-break",
+                "{{timer_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_duration\": 50,\n  \"break_duration\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-break/{{timer_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-break",
+                "{{timer_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_duration\": 50\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-break/{{timer_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-break",
+                "{{timer_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/study-progress",
+      "description": "CRUD accomplished study sessions on subjects.\n\nRequest Parameters:\n\n- Required:\n    \n    - `study_session_date` (date, format: YYYY-MM-DD): The study session date.\n        \n    - `subject` (string): The subject studied.\n        \n    - `completed` (boolean): Whether the session was completed.\n        \n    - `study_hours` (float): Total study hours.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"study_session_date\": \"2023-12-01\",  \n\"subject\": \"Mathematics\",  \n\"completed\": true,  \n\"study_hours\": 2.5  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"study_session_date\": \"2023-12-01\",  \n\"subject\": \"Mathematics\",  \n\"completed\": true,  \n\"study_hours\": 2.5,  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study progress not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-progress/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-progress"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-progress/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-progress"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_session_date\": \"2026-12-01\",\n  \"subject\": \"Mathematics\",\n  \"completed\": true,\n  \"study_hours\": 2.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('progress_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-progress/{{progress_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-progress",
+                "{{progress_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-progress/{{progress_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-progress",
+                "{{progress_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_session_date\": \"2026-12-01\",\n  \"subject\": \"Mathematics\",\n  \"completed\": true,\n  \"study_hours\": 2.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-progress/{{progress_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-progress",
+                "{{progress_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_session_date\": \"2026-12-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-progress/{{progress_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-progress",
+                "{{progress_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/study-challenges",
+      "description": "CRUD study challenges for user self.\n\nRequest Parameters:\n\n- Required:\n    \n    - `challenge_description` (string): Description of the challenge.\n        \n    - `start_date` (date, format: YYYY-MM-DD): Start date of the challenge.\n        \n    - `end_date` (date, format: YYYY-MM-DD): End date of the challenge.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"challenge_description\": \"Study 5 hours daily for a week.\",  \n\"start_date\": \"2023-12-01\",  \n\"end_date\": \"2023-12-07\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"challenge_description\": \"Study 5 hours daily for a week.\",  \n\"start_date\": \"2023-12-01\",  \n\"end_date\": \"2023-12-07\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study challenge not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-challenges/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-challenges"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-challenges/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-challenges"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"challenge_description\": \"Study 5 hours daily for a week.\",\n  \"start_date\": \"2026-12-01\",\n  \"end_date\": \"2026-12-07\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('challenge_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-challenges/{{challenge_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-challenges",
+                "{{challenge_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-challenges/{{challenge_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-challenges",
+                "{{challenge_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"challenge_description\": \"Study 5 hours daily for a week.\",\n  \"start_date\": \"2026-12-01\",\n  \"end_date\": \"2026-12-07\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-challenges/{{challenge_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-challenges",
+                "{{challenge_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"challenge_description\": \"Study 5 hours daily for a week.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-challenges/{{challenge_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-challenges",
+                "{{challenge_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/study/quiz",
+      "description": "CRUD own set of questions and answers.\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The subject for the quiz.\n        \n    - `quiz_content` (string): Quiz content.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"Science\",  \n\"quiz_content\": \"What is photosynthesis?\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"Science\",  \n\"quiz_content\": \"What is photosynthesis?\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Quiz not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study/quiz/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study",
+                "quiz"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study/quiz/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study",
+                "quiz"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Science\",\n  \"quiz_content\": \"What is photosynthesis?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('quiz_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study/quiz/{{quiz_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study",
+                "quiz",
+                "{{quiz_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study/quiz/{{quiz_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study",
+                "quiz",
+                "{{quiz_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Science\",\n  \"quiz_content\": \"What is photosynthesis?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study/quiz/{{quiz_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study",
+                "quiz",
+                "{{quiz_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Science\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study/quiz/{{quiz_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study",
+                "quiz",
+                "{{quiz_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/study-prompt",
+      "description": "CRUD a singular question and answer, like a flashcard\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The subject for the prompt.\n        \n    - `prompt` (string): Prompt content.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"History\",  \n\"prompt\": \"Discuss the causes of World War II.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"History\",  \n\"prompt\": \"Discuss the causes of World War II.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Study prompt not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-prompt/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-prompt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-prompt/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-prompt"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"History\",\n  \"prompt\": \"Discuss the causes of World War II.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('prompt_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-prompt/{{prompt_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-prompt",
+                "{{prompt_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-prompt/{{prompt_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-prompt",
+                "{{prompt_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"History\",\n  \"prompt\": \"Discuss the causes of World War II.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-prompt/{{prompt_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-prompt",
+                "{{prompt_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"History\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-prompt/{{prompt_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-prompt",
+                "{{prompt_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/study-reflection",
+      "description": "CRUD reflections about studies, mental health, goals, milestones, etc.\n\nRequest Parameters:\n\n- Required:\n    \n    - `reflection_date` (date, format: YYYY-MM-DD): The date of reflection.\n        \n    - `strengths` (string): Strengths identified during reflection.\n        \n    - `areas_for_improvement` (string): Areas for improvement identified.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"reflection_date\": \"2023-12-01\",  \n\"strengths\": \"Good time management.\",  \n\"areas_for_improvement\": \"Need to focus more on Mathematics.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"reflection_date\": \"2023-12-01\",  \n\"strengths\": \"Good time management.\",  \n\"areas_for_improvement\": \"Need to focus more on Mathematics.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Reflection not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-reflection/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-reflection"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-reflection/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-reflection"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reflection_date\": \"2026-12-01\",\n  \"strengths\": \"Good time management.\",\n  \"areas_for_improvement\": \"Need to focus more on Mathematics.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('reflection_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-reflection/{{reflection_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-reflection",
+                "{{reflection_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-reflection/{{reflection_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-reflection",
+                "{{reflection_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reflection_date\": \"2026-12-01\",\n  \"strengths\": \"Good time management.\",\n  \"areas_for_improvement\": \"Need to focus more on Mathematics.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-reflection/{{reflection_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-reflection",
+                "{{reflection_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reflection_date\": \"2026-12-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-reflection/{{reflection_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-reflection",
+                "{{reflection_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/course-grades",
+      "description": "CRUD grades on respective subjects.\n\nRequest Parameters:\n\n- Required:\n    \n    - `course_name` (string): The name of the course.\n        \n    - `grade` (float): The grade achieved.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"course_name\": \"Mathematics\",  \n\"grade\": 95.5  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"course_name\": \"Mathematics\",  \n\"grade\": 95.5,  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Grade not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/course-grades/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "course-grades"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/course-grades/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "course-grades"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course_name\": \"Mathematics\",\n  \"grade\": 95.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('grade_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/course-grades/{{grade_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "course-grades",
+                "{{grade_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/course-grades/{{grade_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "course-grades",
+                "{{grade_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course_name\": \"Mathematics\",\n  \"grade\": 95.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/course-grades/{{grade_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "course-grades",
+                "{{grade_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course_name\": \"Mathematics\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/course-grades/{{grade_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "course-grades",
+                "{{grade_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/notes",
+      "description": "CRUD notes. This endpoint is a source for /send-study-notes.\n\nRequest Parameters:\n\n- Required:\n    \n    - `subject` (string): The subject of the note.\n        \n    - `note_content` (string): Content of the note.\n        \n\nRequest Body Example (POST/PUT):  \n{  \n\"subject\": \"Biology\",  \n\"note_content\": \"Mitosis is the process of cell division.\"  \n}\n\nResponse Structure (GET/POST/PUT):  \n{  \n\"id\": 1,  \n\"subject\": \"Biology\",  \n\"note_content\": \"Mitosis is the process of cell division.\",  \n\"created_at\": \"2023-11-01T10:00:00Z\"  \n}\n\nError Handling:\n\n- 400 Bad Request: Missing required fields.\n    \n- 404 Not Found: Note not found for GET/PUT/DELETE requests.",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/notes/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/notes/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Biology\",\n  \"note_content\": \"Mitosis is the process of cell division.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('note_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Retrieve",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/notes/{{note_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                "{{note_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/notes/{{note_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                "{{note_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Biology\",\n  \"note_content\": \"Mitosis is the process of cell division.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Partial update (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/notes/{{note_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                "{{note_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Biology\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/notes/{{note_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                "{{note_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Generated",
+      "item": [
+        {
+          "name": "Setup: create study schedule",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-schedule/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-schedule"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_date\": \"2026-12-01\",\n  \"study_hours\": 5.5,\n  \"subjects\": \"Mathematics,Physics\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('schedule_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Setup: create study break timer",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-break/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-break"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_duration\": 50,\n  \"break_duration\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('timer_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Setup: add a grade",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/course-grades/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "course-grades"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course_name\": \"Mathematics\",\n  \"grade\": 95.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Setup: log a completed session",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/study-progress/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-progress"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"study_session_date\": \"2026-12-01\",\n  \"subject\": \"Mathematics\",\n  \"completed\": true,\n  \"study_hours\": 2.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "/generate-study-statistics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "Fetches /course-grades and /study-progress to generate strengths, weaknesses, and study habits.\n\nRequest Parameters:  \nNone\n\nResponse Structure:  \n{  \n\"highest_grade\": {  \n\"subject\": \"Mathematics\",  \n\"grade\": 95.5  \n},  \n\"lowest_grade\": {  \n\"subject\": \"Physics\",  \n\"grade\": 70.0  \n},  \n\"most_studied_subject\": {  \n\"subject\": \"Mathematics\",  \n\"study_hours\": 20.5  \n},  \n\"least_studied_subject\": {  \n\"subject\": \"History\",  \n\"study_hours\": 5.0  \n}  \n}\n\nError Handling:\n\n- 500 Internal Server Error: Failed to generate statistics.\n\nOnly study-progress entries with completed=true count.",
+            "url": {
+              "raw": "{{base_url}}/generate-study-statistics/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "generate-study-statistics"
+              ]
+            }
+          }
+        },
+        {
+          "name": "/generate-study-schedule",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "Fetches /study-schedule and /study-break to generate a study schedule limited by available hours and makes intervals based on study break timer chosen. Accounts for lunch and dinner time by allotting an hour for each.\n\nRequest Parameters:\n\n- Required:\n    \n    - `study_schedule_id` (integer): ID of the study schedule.\n        \n    - `timer_id` (integer): ID of the study break timer.\n        \n\nResponse Structure:  \n{  \n\"message\": \"Detailed study schedule generated successfully.\",  \n\"schedule\": \\[  \n{  \n\"subject\": \"Mathematics\",  \n\"type\": \"study\",  \n\"start_time\": \"08:00\",  \n\"end_time\": \"09:00\",  \n\"duration_minutes\": 60  \n},  \n{  \n\"subject\": \"Mathematics\",  \n\"type\": \"break\",  \n\"start_time\": \"09:00\",  \n\"end_time\": \"09:10\",  \n\"duration_minutes\": 10  \n}  \n\\]  \n}\n\nError Handling:\n\n- 400 Bad Request: Invalid study hours or no subjects available.\n    \n- 404 Not Found: Study schedule or timer not found.\n\nRun Create in /study-schedule and /study-break first; their ids are saved automatically.",
+            "url": {
+              "raw": "{{base_url}}/generate-study-schedule/{{schedule_id}}/{{timer_id}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "generate-study-schedule",
+                "{{schedule_id}}",
+                "{{timer_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "External APIs (no key needed)",
+      "item": [
+        {
+          "name": "/motivation (ZenQuotes)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "Random quote from ZenQuotes. 502 if ZenQuotes is unreachable.",
+            "url": {
+              "raw": "{{base_url}}/motivation/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "motivation"
+              ]
+            }
+          }
+        },
+        {
+          "name": "/resources/quiz (Open Trivia DB)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "Questions from Open Trivia DB. Supported subjects include math, science, computers, history, geography, art, music, sports, books. 400 for unsupported subjects; 502 if Open Trivia DB fails (it allows 1 request per 5 seconds).",
+            "url": {
+              "raw": "{{base_url}}/resources/quiz/?subject=geography",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "resources",
+                "quiz"
+              ],
+              "query": [
+                {
+                  "key": "subject",
+                  "value": "geography"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "External APIs (need keys in .env)",
+      "item": [
+        {
+          "name": "/study-resources-recommendations (CORE)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "Research works from CORE. Needs CORE_API_KEY in .env (503 if missing, 502 if CORE fails).",
+            "url": {
+              "raw": "{{base_url}}/study-resources-recommendations/articles/?subject=computer science",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "study-resources-recommendations",
+                "articles"
+              ],
+              "query": [
+                {
+                  "key": "subject",
+                  "value": "computer science"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "1. Connect Google account",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "Returns `authorization_url`. Open it in a browser, sign in with a test-user Google account and allow access. Google then redirects to /api/oauth/callback/, which saves the connection. The link expires after 10 minutes.",
+            "url": {
+              "raw": "{{base_url}}/oauth/redirect/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "oauth",
+                "redirect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Setup: create a note to send",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{base_url}}/notes/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Biology\",\n  \"note_content\": \"Mitosis is the process of cell division.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('note_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "2. /send-study-notes (Gmail)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "Emails a note from your connected Gmail. Create a note first. 401 if Google is not connected, 404 if the note is not yours.",
+            "url": {
+              "raw": "{{base_url}}/send-study-notes/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "send-study-notes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to_email\": \"student@example.com\",\n  \"note_id\": {{note_id}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "3. /add-exam-to-calendar (Google Calendar)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "Creates an event on your primary Google Calendar in CALENDAR_TIME_ZONE. duration_minutes is optional (default 120). Returns the event link.",
+            "url": {
+              "raw": "{{base_url}}/add-exam-to-calendar/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "add-exam-to-calendar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"exam_date\": \"2026-12-15\",\n  \"exam_time\": \"09:00\",\n  \"subject\": \"Mathematics\",\n  \"duration_minutes\": 120\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
